@@ -44,7 +44,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Location = new System.Drawing.Point(19, 205);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(303, 303);
+            this.panel2.Size = new System.Drawing.Size(303, 142);
             this.panel2.TabIndex = 1;
             // 
             // pictureBox1
@@ -103,7 +103,7 @@
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(19, 540);
+            this.button3.Location = new System.Drawing.Point(19, 364);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(303, 46);
             this.button3.TabIndex = 12;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(341, 598);
+            this.ClientSize = new System.Drawing.Size(341, 432);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
@@ -123,6 +123,7 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
