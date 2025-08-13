@@ -28,24 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.analyzeText = new System.Windows.Forms.RichTextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Location = new System.Drawing.Point(19, 205);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(303, 142);
-            this.panel2.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -96,6 +89,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Analyze";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -109,6 +103,24 @@
             this.button3.TabIndex = 12;
             this.button3.Text = "Export";
             this.button3.UseVisualStyleBackColor = false;
+            // 
+            // analyzeText
+            // 
+            this.analyzeText.Location = new System.Drawing.Point(-2, -2);
+            this.analyzeText.Name = "analyzeText";
+            this.analyzeText.Size = new System.Drawing.Size(303, 142);
+            this.analyzeText.TabIndex = 0;
+            this.analyzeText.Text = "";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.analyzeText);
+            this.panel2.Location = new System.Drawing.Point(19, 205);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(303, 142);
+            this.panel2.TabIndex = 1;
             // 
             // Form1
             // 
@@ -127,18 +139,20 @@
             this.Text = "File Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RichTextBox analyzeText;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
