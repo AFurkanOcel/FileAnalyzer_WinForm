@@ -17,7 +17,7 @@ namespace FileAnalyzer_WinForm
                     return "File is empty!";
                 }
 
-                string[] punctuation = { ".", ",", ";", ":", "-", "_", "|", "<", ">", "!", "?", "#", "%", "/", "=", "*", "+", "{", "[", "]", "}", "(", ")" };
+                string[] punctuation = { ".", ",", ";", ":", "-", "_", "|", "<", ">", "!", "?", "#", "%", "/", "=", "*", "+", "{", "[", "]", "}", "(", ")", "𝜀", "'" };
                 string[] conjunctions = { "ve", "ile", "ama", "ancak" };
 
                 string[] words = content.Split(' ', '\n', '\r');
@@ -41,9 +41,13 @@ namespace FileAnalyzer_WinForm
                         if (lowercaseWord.Contains(punc))
                         {
                             if (punctuationAndCounts.ContainsKey(punc))
+                            {
                                 punctuationAndCounts[punc]++;
+                            }
                             else
+                            {
                                 punctuationAndCounts[punc] = 1;
+                            }
                         }
                     }
                 }
@@ -56,9 +60,13 @@ namespace FileAnalyzer_WinForm
                 foreach (var word in filteredWords)
                 {
                     if (wordAndCounts.ContainsKey(word))
+                    {
                         wordAndCounts[word]++;
+                    }
                     else
+                    {
                         wordAndCounts[word] = 1;
+                    }
                 }
 
                 var sortedWordCounts = wordAndCounts.OrderByDescending(entry => entry.Value);

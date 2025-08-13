@@ -80,6 +80,7 @@
             this.filePathText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.filePathText.Location = new System.Drawing.Point(73, 148);
             this.filePathText.Name = "filePathText";
+            this.filePathText.ReadOnly = true;
             this.filePathText.Size = new System.Drawing.Size(256, 32);
             this.filePathText.TabIndex = 0;
             this.filePathText.Text = "";
@@ -114,8 +115,10 @@
             // 
             // analyzeText
             // 
+            this.analyzeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.analyzeText.Location = new System.Drawing.Point(-2, -2);
             this.analyzeText.Name = "analyzeText";
+            this.analyzeText.ReadOnly = true;
             this.analyzeText.Size = new System.Drawing.Size(303, 142);
             this.analyzeText.TabIndex = 0;
             this.analyzeText.Text = "";
@@ -216,7 +219,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(341, 498);
+            this.ClientSize = new System.Drawing.Size(357, 498);
             this.Controls.Add(this.ExJsonRdBtn);
             this.Controls.Add(this.ExTxtRdBtn);
             this.Controls.Add(this.AnalyzeBar);
