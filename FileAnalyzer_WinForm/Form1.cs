@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using FileAnalyzer_WinForm.FileReaders;
 using FileAnalyzer_Console.FileReaders;
+using Newtonsoft.Json;
 
 namespace FileAnalyzer_WinForm
 {
@@ -103,7 +104,14 @@ namespace FileAnalyzer_WinForm
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
+            Directory.CreateDirectory("JSON");
 
+            string AnalyzedText = AnalyzeText.Text;
+
+            string json = JsonConvert.SerializeObject(AnalyzedText);
+            File.WriteAllText(@"JSON\AnalyzeResult.json", json);
+
+            MessageBox.Show("Export completed");
         }
     }
 }

@@ -9,36 +9,47 @@ namespace FileAnalyzer_WinForm
     {
         public string AnalyzeFile(string content)
         {
-            //if (string.IsNullOrWhiteSpace(content))
-            //{
-            //    throw new Exception("File is empty!");
-            //}
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                return "File is empty!";
+            }
 
-            int charCount = content.Length;
-            int lineCount = content.Split('\n').Length;
-
+            string[] punctuation = { ".", ",", ";", ":", "-", "_", "|", "<", ">", "!", "?", "#", "%", "/", "=", "*", "+", "{", "[", "]", "}", "(", ")" };
             string[] conjunctions = { "ve", "ile", "ama", "ancak" };
+
             string[] words = content.Split(' ', '\n', '\r');
-            string[] punctuation = {""}; // noktalama işaretleri de sayılmalı, daha eklemedim.
 
             List<string> filteredWords = new List<string>();
+            Dictionary<string, int> punctuationAndCounts = new Dictionary<string, int>();
 
             foreach (string word in words)
             {
-                string lowercaseWord = word.ToLower();
+                string lowercaseWord = word.ToLower().Trim();
 
-                int number;
-                bool isNumber = int.TryParse(lowercaseWord, out number);
+                bool isNumber = int.TryParse(lowercaseWord, out _);
 
-                if (!string.IsNullOrWhiteSpace(lowercaseWord) && !conjunctions.Contains(lowercaseWord) && !isNumber)
+                if (!string.IsNullOrWhiteSpace(lowercaseWord) && !conjunctions.Contains(lowercaseWord) && !isNumber && !punctuation.Contains(lowercaseWord))
                 {
                     filteredWords.Add(lowercaseWord);
                 }
+
+                foreach (var punct in punctuation)
+                {
+                    if (lowercaseWord.Contains(punct))
+                    {
+                        if (punctuationAndCounts.ContainsKey(punct))
+                            punctuationAndCounts[punct]++;
+                        else
+                            punctuationAndCounts[punct] = 1;
+                    }
+                }
             }
 
+            int charCount = content.Length;
+            int lineCount = content.Split('\n').Length;
             int uniqueWordCount = filteredWords.Distinct().Count();
-            Dictionary<string, int> wordAndCounts = new Dictionary<string, int>();
 
+            Dictionary<string, int> wordAndCounts = new Dictionary<string, int>();
             foreach (var word in filteredWords)
             {
                 if (wordAndCounts.ContainsKey(word))
@@ -47,23 +58,34 @@ namespace FileAnalyzer_WinForm
                     wordAndCounts[word] = 1;
             }
 
-            var sortedWordCounts = wordAndCounts.OrderByDescending(wordAndValue => wordAndValue.Value);
+            var sortedWordCounts = wordAndCounts.OrderByDescending(entry => entry.Value);
+            var sortedPunctuations = punctuationAndCounts.OrderByDescending(entry => entry.Value);
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Character count: {charCount}");
-            sb.AppendLine($"Line count: {lineCount}");
-            sb.AppendLine($"Unique word count: {uniqueWordCount}");
+            sb.AppendLine($"Character Count: {charCount}");
+            sb.AppendLine($"Line Count: {lineCount}");
+            sb.AppendLine($"Unique Word Count: {uniqueWordCount}");
             sb.AppendLine("");
-            sb.AppendLine("repetitive words");
+            sb.AppendLine("Repetitive Words");
             sb.AppendLine("----------------");
 
-            foreach (var repetitiveWords in sortedWordCounts)
+            foreach (var repetitiveWord in sortedWordCounts)
             {
-                if (repetitiveWords.Value > 1)
+                if (repetitiveWord.Value > 1)
                 {
-                    sb.AppendLine($"{repetitiveWords.Value}  {repetitiveWords.Key}");
+                    sb.AppendLine($"{repetitiveWord.Value}  {repetitiveWord.Key}");
                 }
             }
+
+            sb.AppendLine("");
+            sb.AppendLine("Punctuation Counts");
+            sb.AppendLine("-----------------");
+
+            foreach (var punc in sortedPunctuations)
+            {
+                sb.AppendLine($"{punc.Key} : {punc.Value}");
+            }
+
             return sb.ToString();
         }
     }
