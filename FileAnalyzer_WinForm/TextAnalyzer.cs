@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FileAnalyzer_WinForm
 {
@@ -21,6 +19,7 @@ namespace FileAnalyzer_WinForm
 
             string[] conjunctions = { "ve", "ile", "ama", "ancak" };
             string[] words = content.Split(' ', '\n', '\r');
+            string[] punctuation = {""}; // noktalama işaretleri de sayılmalı, daha eklemedim.
 
             List<string> filteredWords = new List<string>();
 

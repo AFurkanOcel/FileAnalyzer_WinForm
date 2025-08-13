@@ -28,131 +28,206 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.FolderPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.analyzeText = new System.Windows.Forms.RichTextBox();
+            this.SelectFolderButton = new System.Windows.Forms.Button();
+            this.FolderPathText = new System.Windows.Forms.RichTextBox();
+            this.AnalyzeButton = new System.Windows.Forms.Button();
+            this.ExportButton = new System.Windows.Forms.Button();
+            this.AnalyzeText = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.txtCheckBox = new System.Windows.Forms.CheckBox();
+            this.docxCheckBox = new System.Windows.Forms.CheckBox();
+            this.pdfCheckBox = new System.Windows.Forms.CheckBox();
+            this.FileTypeLabel = new System.Windows.Forms.Label();
+            this.AnalyzeBar = new System.Windows.Forms.ProgressBar();
+            ((System.ComponentModel.ISupportInitialize)(this.FolderPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // FolderPictureBox
             // 
-            this.pictureBox1.Image = global::FileAnalyzer_WinForm.Properties.Resources.Folder;
-            this.pictureBox1.Location = new System.Drawing.Point(19, 82);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 36);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.FolderPictureBox.Image = global::FileAnalyzer_WinForm.Properties.Resources.Folder;
+            this.FolderPictureBox.Location = new System.Drawing.Point(26, 144);
+            this.FolderPictureBox.Name = "FolderPictureBox";
+            this.FolderPictureBox.Size = new System.Drawing.Size(40, 36);
+            this.FolderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.FolderPictureBox.TabIndex = 9;
+            this.FolderPictureBox.TabStop = false;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button2
+            // SelectFolderButton
             // 
-            this.button2.BackColor = System.Drawing.Color.Gainsboro;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(19, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(303, 46);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Select Folder";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.SelectFolderButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.SelectFolderButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelectFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SelectFolderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.SelectFolderButton.Location = new System.Drawing.Point(26, 88);
+            this.SelectFolderButton.Name = "SelectFolderButton";
+            this.SelectFolderButton.Size = new System.Drawing.Size(303, 46);
+            this.SelectFolderButton.TabIndex = 10;
+            this.SelectFolderButton.Text = "Select Folder";
+            this.SelectFolderButton.UseVisualStyleBackColor = false;
+            this.SelectFolderButton.Click += new System.EventHandler(this.SelectFolderButton_Click);
             // 
-            // richTextBox1
+            // FolderPathText
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.richTextBox1.Location = new System.Drawing.Point(66, 86);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(256, 32);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.FolderPathText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FolderPathText.Location = new System.Drawing.Point(73, 148);
+            this.FolderPathText.Name = "FolderPathText";
+            this.FolderPathText.Size = new System.Drawing.Size(256, 32);
+            this.FolderPathText.TabIndex = 0;
+            this.FolderPathText.Text = "";
             // 
-            // button1
+            // AnalyzeButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(19, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(303, 46);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Analyze";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.AnalyzeButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.AnalyzeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AnalyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AnalyzeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AnalyzeButton.Location = new System.Drawing.Point(26, 197);
+            this.AnalyzeButton.Name = "AnalyzeButton";
+            this.AnalyzeButton.Size = new System.Drawing.Size(303, 46);
+            this.AnalyzeButton.TabIndex = 11;
+            this.AnalyzeButton.Text = "Analyze";
+            this.AnalyzeButton.UseVisualStyleBackColor = false;
+            this.AnalyzeButton.Click += new System.EventHandler(this.AnalyzeButton_Click);
             // 
-            // button3
+            // ExportButton
             // 
-            this.button3.BackColor = System.Drawing.Color.Gainsboro;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(19, 364);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(303, 46);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Export";
-            this.button3.UseVisualStyleBackColor = false;
+            this.ExportButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.ExportButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExportButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ExportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ExportButton.Location = new System.Drawing.Point(26, 419);
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.Size = new System.Drawing.Size(303, 46);
+            this.ExportButton.TabIndex = 12;
+            this.ExportButton.Text = "Export";
+            this.ExportButton.UseVisualStyleBackColor = false;
+            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
             // 
-            // analyzeText
+            // AnalyzeText
             // 
-            this.analyzeText.Location = new System.Drawing.Point(-2, -2);
-            this.analyzeText.Name = "analyzeText";
-            this.analyzeText.Size = new System.Drawing.Size(303, 142);
-            this.analyzeText.TabIndex = 0;
-            this.analyzeText.Text = "";
+            this.AnalyzeText.Location = new System.Drawing.Point(-2, -2);
+            this.AnalyzeText.Name = "AnalyzeText";
+            this.AnalyzeText.Size = new System.Drawing.Size(303, 142);
+            this.AnalyzeText.TabIndex = 0;
+            this.AnalyzeText.Text = "";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.analyzeText);
-            this.panel2.Location = new System.Drawing.Point(19, 205);
+            this.panel2.Controls.Add(this.AnalyzeText);
+            this.panel2.Location = new System.Drawing.Point(26, 259);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(303, 142);
             this.panel2.TabIndex = 1;
+            // 
+            // txtCheckBox
+            // 
+            this.txtCheckBox.AutoSize = true;
+            this.txtCheckBox.Checked = true;
+            this.txtCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.txtCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtCheckBox.Location = new System.Drawing.Point(26, 53);
+            this.txtCheckBox.Name = "txtCheckBox";
+            this.txtCheckBox.Size = new System.Drawing.Size(59, 29);
+            this.txtCheckBox.TabIndex = 13;
+            this.txtCheckBox.Text = ".txt";
+            this.txtCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // docxCheckBox
+            // 
+            this.docxCheckBox.AutoSize = true;
+            this.docxCheckBox.Checked = true;
+            this.docxCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.docxCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.docxCheckBox.Location = new System.Drawing.Point(91, 53);
+            this.docxCheckBox.Name = "docxCheckBox";
+            this.docxCheckBox.Size = new System.Drawing.Size(81, 29);
+            this.docxCheckBox.TabIndex = 14;
+            this.docxCheckBox.Text = ".docx";
+            this.docxCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // pdfCheckBox
+            // 
+            this.pdfCheckBox.AutoSize = true;
+            this.pdfCheckBox.Checked = true;
+            this.pdfCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.pdfCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.pdfCheckBox.Location = new System.Drawing.Point(178, 53);
+            this.pdfCheckBox.Name = "pdfCheckBox";
+            this.pdfCheckBox.Size = new System.Drawing.Size(66, 29);
+            this.pdfCheckBox.TabIndex = 15;
+            this.pdfCheckBox.Text = ".pdf";
+            this.pdfCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // FileTypeLabel
+            // 
+            this.FileTypeLabel.AutoSize = true;
+            this.FileTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FileTypeLabel.Location = new System.Drawing.Point(20, 18);
+            this.FileTypeLabel.Name = "FileTypeLabel";
+            this.FileTypeLabel.Size = new System.Drawing.Size(131, 32);
+            this.FileTypeLabel.TabIndex = 16;
+            this.FileTypeLabel.Text = "File Type";
+            // 
+            // AnalyzeBar
+            // 
+            this.AnalyzeBar.BackColor = System.Drawing.Color.Gainsboro;
+            this.AnalyzeBar.Location = new System.Drawing.Point(26, 233);
+            this.AnalyzeBar.Name = "AnalyzeBar";
+            this.AnalyzeBar.Size = new System.Drawing.Size(303, 10);
+            this.AnalyzeBar.Step = 100;
+            this.AnalyzeBar.TabIndex = 17;
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(341, 432);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(341, 487);
+            this.Controls.Add(this.AnalyzeBar);
+            this.Controls.Add(this.FileTypeLabel);
+            this.Controls.Add(this.pdfCheckBox);
+            this.Controls.Add(this.docxCheckBox);
+            this.Controls.Add(this.txtCheckBox);
+            this.Controls.Add(this.ExportButton);
+            this.Controls.Add(this.AnalyzeButton);
+            this.Controls.Add(this.FolderPathText);
+            this.Controls.Add(this.SelectFolderButton);
+            this.Controls.Add(this.FolderPictureBox);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FolderPictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox FolderPictureBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RichTextBox analyzeText;
+        private System.Windows.Forms.Button SelectFolderButton;
+        private System.Windows.Forms.RichTextBox FolderPathText;
+        private System.Windows.Forms.Button AnalyzeButton;
+        private System.Windows.Forms.Button ExportButton;
+        private System.Windows.Forms.RichTextBox AnalyzeText;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox txtCheckBox;
+        private System.Windows.Forms.CheckBox docxCheckBox;
+        private System.Windows.Forms.CheckBox pdfCheckBox;
+        private System.Windows.Forms.Label FileTypeLabel;
+        private System.Windows.Forms.ProgressBar AnalyzeBar;
     }
 }
 

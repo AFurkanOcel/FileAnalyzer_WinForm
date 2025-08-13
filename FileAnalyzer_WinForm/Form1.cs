@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FileAnalyzer_WinForm.FileReaders;
 using FileAnalyzer_Console.FileReaders;
 
@@ -28,26 +20,62 @@ namespace FileAnalyzer_WinForm
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void SelectFolderButton_Click(object sender, EventArgs e)
         {
+            AnalyzeBar.Value = 0;
+            AnalyzeText.Text = "";
+            FolderPathText.Text = "";
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            openFileDialog.Filter = "All files (*.*)|*.*|  Text Files (*.txt)|*.txt|  Word Documents (*.docx)|*.docx|  PDF Files (*.pdf)|*.pdf";
+            if (txtCheckBox.Checked == true && docxCheckBox.Checked == true && pdfCheckBox.Checked == true)
+            {
+                openFileDialog.Filter = "All files (*.txt;*.docx;*.pdf)|*.txt;*.docx;*.pdf|  Text Files (*.txt)|*.txt|  Word Documents (*.docx)|*.docx|  PDF Files (*.pdf)|*.pdf";
+            }
+            else if (txtCheckBox.Checked == true && docxCheckBox.Checked == true && pdfCheckBox.Checked == false)
+            {
+                openFileDialog.Filter = "All Files (*.txt;*.docx)|*.txt;*.docx|  Text Files (*.txt)|*.txt|  Word Documents (*.docx)|*.docx";
+            }
+            else if (txtCheckBox.Checked == true && docxCheckBox.Checked == false && pdfCheckBox.Checked == true)
+            {
+                openFileDialog.Filter = "All Files (*.txt;*.pdf)|*.txt;*.pdf|  Text Files (*.txt)|*.txt|  PDF Files (*.pdf)|*.pdf";
+            }
+            else if (txtCheckBox.Checked == false && docxCheckBox.Checked == true && pdfCheckBox.Checked == true)
+            {
+                openFileDialog.Filter = "All Files (*.docx;*.pdf)|*.docx;*.pdf|  Word Documents (*.docx)|*.docx|  PDF Files (*.pdf)|*.pdf";
+            }
+            else if (txtCheckBox.Checked == true && docxCheckBox.Checked == false && pdfCheckBox.Checked == false)
+            {
+                openFileDialog.Filter = "Text Files (*.txt)|*.txt";
+            }
+            else if (txtCheckBox.Checked == false && docxCheckBox.Checked == true && pdfCheckBox.Checked == false)
+            {
+                openFileDialog.Filter = "Word Documents (*.docx)|*.docx";
+            }
+            else if (txtCheckBox.Checked == false && docxCheckBox.Checked == false && pdfCheckBox.Checked == true)
+            {
+                openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            }
+            else
+            {
+                MessageBox.Show("No file type selected");
+            }
 
             openFileDialog.Title = "FileAnalyzer";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 filePath = openFileDialog.FileName;
-                richTextBox1.Text = "";
-                richTextBox1.Text = openFileDialog.FileName;
-                richTextBox1.WordWrap = false;
-                richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
+                FolderPathText.Text = openFileDialog.FileName;
+                FolderPathText.WordWrap = false;
+                FolderPathText.ScrollBars = RichTextBoxScrollBars.None;
             }
         }
 
-        public void button1_Click(object sender, EventArgs e)
+        public void AnalyzeButton_Click(object sender, EventArgs e)
         {
+            AnalyzeBar.Value += 50;
+
             string extension = Path.GetExtension(filePath).ToLower();
 
             if (extension == ".txt")
@@ -69,7 +97,13 @@ namespace FileAnalyzer_WinForm
             var analyzer = new TextAnalyzer();
             string analyzeResult = analyzer.AnalyzeFile(content);
 
-            analyzeText.Text = analyzeResult;
+            AnalyzeBar.Value += 50;
+            AnalyzeText.Text = analyzeResult;
+        }
+
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
