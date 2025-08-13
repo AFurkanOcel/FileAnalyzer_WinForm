@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileAnalyzer_WinForm.FileReaders
 {
@@ -11,16 +7,35 @@ namespace FileAnalyzer_WinForm.FileReaders
     {
         public string ReadText(string filePath)
         {
-            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            try
+            {
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
-            StreamReader reader = new StreamReader(fs);
+                StreamReader reader = new StreamReader(fs);
 
-            string content = reader.ReadToEnd();
+                string content = reader.ReadToEnd();
 
-            reader.Close();
-            fs.Close();
+                reader.Close();
+                fs.Close();
 
-            return content;
+                return content;
+            }
+            catch(Exception ex)
+            {
+                Directory.CreateDirectory("Logs");
+                string logPath = Path.Combine("Logs", "log.txt");
+                File.AppendAllText(logPath, Environment.UserName);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, DateTime.Now.ToString("dd.MM.yyyy HH.mm"));
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.Message);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.StackTrace);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, Environment.NewLine);
+
+                return "Error reading file: " + ex.Message;
+            }
         }
     }
 }

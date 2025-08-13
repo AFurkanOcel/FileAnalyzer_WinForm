@@ -21,97 +21,173 @@ namespace FileAnalyzer_WinForm
 
         }
 
-        private void SelectFolderButton_Click(object sender, EventArgs e)
+        private void SelectFileBtn_Click(object sender, EventArgs e)
         {
-            AnalyzeBar.Value = 0;
-            AnalyzeText.Text = "";
-            FolderPathText.Text = "";
+            try
+            {
+                AnalyzeBar.Value = 0;
+                analyzeText.Text = "";
+                filePathText.Text = "";
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+                OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            if (txtCheckBox.Checked == true && docxCheckBox.Checked == true && pdfCheckBox.Checked == true)
-            {
-                openFileDialog.Filter = "All files (*.txt;*.docx;*.pdf)|*.txt;*.docx;*.pdf|  Text Files (*.txt)|*.txt|  Word Documents (*.docx)|*.docx|  PDF Files (*.pdf)|*.pdf";
-            }
-            else if (txtCheckBox.Checked == true && docxCheckBox.Checked == true && pdfCheckBox.Checked == false)
-            {
-                openFileDialog.Filter = "All Files (*.txt;*.docx)|*.txt;*.docx|  Text Files (*.txt)|*.txt|  Word Documents (*.docx)|*.docx";
-            }
-            else if (txtCheckBox.Checked == true && docxCheckBox.Checked == false && pdfCheckBox.Checked == true)
-            {
-                openFileDialog.Filter = "All Files (*.txt;*.pdf)|*.txt;*.pdf|  Text Files (*.txt)|*.txt|  PDF Files (*.pdf)|*.pdf";
-            }
-            else if (txtCheckBox.Checked == false && docxCheckBox.Checked == true && pdfCheckBox.Checked == true)
-            {
-                openFileDialog.Filter = "All Files (*.docx;*.pdf)|*.docx;*.pdf|  Word Documents (*.docx)|*.docx|  PDF Files (*.pdf)|*.pdf";
-            }
-            else if (txtCheckBox.Checked == true && docxCheckBox.Checked == false && pdfCheckBox.Checked == false)
-            {
-                openFileDialog.Filter = "Text Files (*.txt)|*.txt";
-            }
-            else if (txtCheckBox.Checked == false && docxCheckBox.Checked == true && pdfCheckBox.Checked == false)
-            {
-                openFileDialog.Filter = "Word Documents (*.docx)|*.docx";
-            }
-            else if (txtCheckBox.Checked == false && docxCheckBox.Checked == false && pdfCheckBox.Checked == true)
-            {
-                openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
-            }
-            else
-            {
-                MessageBox.Show("No file type selected");
-            }
+                if (txtCheckBox.Checked == true && docxCheckBox.Checked == true && pdfCheckBox.Checked == true)
+                {
+                    openFileDialog.Filter = "All files (*.txt;*.docx;*.pdf)|*.txt;*.docx;*.pdf|  Text Files (*.txt)|*.txt|  Word Documents (*.docx)|*.docx|  PDF Files (*.pdf)|*.pdf";
+                }
+                else if (txtCheckBox.Checked == true && docxCheckBox.Checked == true && pdfCheckBox.Checked == false)
+                {
+                    openFileDialog.Filter = "All Files (*.txt;*.docx)|*.txt;*.docx|  Text Files (*.txt)|*.txt|  Word Documents (*.docx)|*.docx";
+                }
+                else if (txtCheckBox.Checked == true && docxCheckBox.Checked == false && pdfCheckBox.Checked == true)
+                {
+                    openFileDialog.Filter = "All Files (*.txt;*.pdf)|*.txt;*.pdf|  Text Files (*.txt)|*.txt|  PDF Files (*.pdf)|*.pdf";
+                }
+                else if (txtCheckBox.Checked == false && docxCheckBox.Checked == true && pdfCheckBox.Checked == true)
+                {
+                    openFileDialog.Filter = "All Files (*.docx;*.pdf)|*.docx;*.pdf|  Word Documents (*.docx)|*.docx|  PDF Files (*.pdf)|*.pdf";
+                }
+                else if (txtCheckBox.Checked == true && docxCheckBox.Checked == false && pdfCheckBox.Checked == false)
+                {
+                    openFileDialog.Filter = "Text Files (*.txt)|*.txt";
+                }
+                else if (txtCheckBox.Checked == false && docxCheckBox.Checked == true && pdfCheckBox.Checked == false)
+                {
+                    openFileDialog.Filter = "Word Documents (*.docx)|*.docx";
+                }
+                else if (txtCheckBox.Checked == false && docxCheckBox.Checked == false && pdfCheckBox.Checked == true)
+                {
+                    openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                }
+                else
+                {
+                    MessageBox.Show("No file type selected");
+                    return;
+                }
 
-            openFileDialog.Title = "FileAnalyzer";
+                openFileDialog.Title = "FileAnalyzer";
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    filePathText.Text = openFileDialog.FileName;
+                    filePathText.WordWrap = false;
+                    filePathText.ScrollBars = RichTextBoxScrollBars.None;
+                }
+            }
+            catch (Exception ex)
             {
-                filePath = openFileDialog.FileName;
-                FolderPathText.Text = openFileDialog.FileName;
-                FolderPathText.WordWrap = false;
-                FolderPathText.ScrollBars = RichTextBoxScrollBars.None;
+                Directory.CreateDirectory("Logs");
+                string logPath = Path.Combine("Logs", "log.txt");
+
+                File.AppendAllText(logPath, Environment.UserName);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, DateTime.Now.ToString("dd.MM.yyyy HH.mm"));
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.Message);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.StackTrace);
+                File.AppendAllText(logPath, Environment.NewLine);
             }
         }
 
-        public void AnalyzeButton_Click(object sender, EventArgs e)
+        public void AnalyzeBtn_Click(object sender, EventArgs e)
         {
-            AnalyzeBar.Value += 50;
-
-            string extension = Path.GetExtension(filePath).ToLower();
-
-            if (extension == ".txt")
+            try
             {
-                var txtReader = new TxtFileReader();
-                content = txtReader.ReadText(filePath);
-            }
-            else if (extension == ".docx")
-            {
-                var txtReader = new DocxFileReader();
-                content = txtReader.ReadText(filePath);
-            }
-            else
-            {
-                var txtReader = new PdfFileReader();
-                content = txtReader.ReadText(filePath);
-            }
+                if (filePathText.Text == "")
+                {
+                    MessageBox.Show("Please select a file to analyze");
+                    return;
+                }
+                else
+                {
+                    AnalyzeBar.Value += 50;
 
-            var analyzer = new TextAnalyzer();
-            string analyzeResult = analyzer.AnalyzeFile(content);
+                    string extension = Path.GetExtension(filePath).ToLower();
 
-            AnalyzeBar.Value += 50;
-            AnalyzeText.Text = analyzeResult;
+                    if (extension == ".txt")
+                    {
+                        var txtReader = new TxtFileReader();
+                        content = txtReader.ReadText(filePath);
+                    }
+                    else if (extension == ".docx")
+                    {
+                        var txtReader = new DocxFileReader();
+                        content = txtReader.ReadText(filePath);
+                    }
+                    else
+                    {
+                        var txtReader = new PdfFileReader();
+                        content = txtReader.ReadText(filePath);
+                    }
+
+                    var analyzer = new TextAnalyzer();
+                    string analyzeResult = analyzer.AnalyzeFile(content);
+
+                    AnalyzeBar.Value += 50;
+                    analyzeText.Text = analyzeResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                Directory.CreateDirectory("Logs");
+                string logPath = Path.Combine("Logs", "log.txt");
+                File.AppendAllText(logPath, Environment.UserName);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, DateTime.Now.ToString("dd.MM.yyyy HH.mm"));
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.Message);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.StackTrace);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, Environment.NewLine);
+            }
         }
 
-        private void ExportButton_Click(object sender, EventArgs e)
+        private void ExportBtn_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory("JSON");
+            try
+            {
+                if (analyzeText.Text == "")
+                {
+                    MessageBox.Show("Please analyze a file before exporting");
+                    return;
+                }
+                else
+                {
+                    Directory.CreateDirectory("AnalyzeResults");
 
-            string AnalyzedText = AnalyzeText.Text;
+                    if (ExJsonRdBtn.Checked)
+                    {
+                        string AnalyzedText = analyzeText.Text;
+                        string json = JsonConvert.SerializeObject(AnalyzedText);
+                        File.WriteAllText(@"AnalyzeResults\AnalyzeResult.json", json);
 
-            string json = JsonConvert.SerializeObject(AnalyzedText);
-            File.WriteAllText(@"JSON\AnalyzeResult.json", json);
+                        MessageBox.Show("Export completed");
+                    }
+                    else
+                    {
+                        string AnalyzedText = analyzeText.Text;
+                        File.WriteAllText(@"AnalyzeResults\AnalyzeResult.txt", AnalyzedText);
 
-            MessageBox.Show("Export completed");
+                        MessageBox.Show("Export completed");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Directory.CreateDirectory("Logs");
+                string logPath = Path.Combine("Logs", "log.txt");
+                File.AppendAllText(logPath, Environment.UserName);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, DateTime.Now.ToString("dd.MM.yyyy HH.mm"));
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.Message);
+                File.AppendAllText(logPath, Environment.NewLine);
+                File.AppendAllText(logPath, ex.StackTrace);
+                File.AppendAllText(logPath, Environment.NewLine);
+            }
         }
     }
 }
