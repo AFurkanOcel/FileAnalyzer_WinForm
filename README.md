@@ -3,8 +3,8 @@
 A simple file analysis tool with an optional login system.  
 The application allows you to analyze `.txt`, `.docx`, and `.pdf` files, providing detailed statistics such as character count, line count, unique words, repeated words with their frequencies, and punctuation counts.
 
-![File Image](Images\LogIn_SignUp.png)  
-![File Image 2](Images\FileAnalyzer.png)  
+![File Image](Images/LogIn_SignUp.png)  
+![File Image 2](Images/FileAnalyzer.png)  
 
 ## Features
 
