@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.folderPicBox = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.selectFileBtn = new System.Windows.Forms.Button();
             this.filePathText = new System.Windows.Forms.RichTextBox();
@@ -43,19 +43,10 @@
             this.AnalyzeBar = new System.Windows.Forms.ProgressBar();
             this.ExTxtRdBtn = new System.Windows.Forms.RadioButton();
             this.ExJsonRdBtn = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.folderPicBox)).BeginInit();
+            this.folderPicBox = new System.Windows.Forms.PictureBox();
             this.pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.folderPicBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // folderPicBox
-            // 
-            this.folderPicBox.Image = global::FileAnalyzer_WinForm.Properties.Resources.Folder;
-            this.folderPicBox.Location = new System.Drawing.Point(26, 144);
-            this.folderPicBox.Name = "folderPicBox";
-            this.folderPicBox.Size = new System.Drawing.Size(40, 36);
-            this.folderPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.folderPicBox.TabIndex = 9;
-            this.folderPicBox.TabStop = false;
             // 
             // openFileDialog1
             // 
@@ -115,7 +106,7 @@
             // 
             // analyzeText
             // 
-            this.analyzeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.analyzeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.analyzeText.Location = new System.Drawing.Point(-2, -2);
             this.analyzeText.Name = "analyzeText";
             this.analyzeText.ReadOnly = true;
@@ -215,6 +206,16 @@
             this.ExJsonRdBtn.Text = ".json";
             this.ExJsonRdBtn.UseVisualStyleBackColor = true;
             // 
+            // folderPicBox
+            // 
+            this.folderPicBox.Image = global::FileAnalyzer_WinForm.Properties.Resources.Folder;
+            this.folderPicBox.Location = new System.Drawing.Point(26, 144);
+            this.folderPicBox.Name = "folderPicBox";
+            this.folderPicBox.Size = new System.Drawing.Size(40, 36);
+            this.folderPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.folderPicBox.TabIndex = 9;
+            this.folderPicBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -234,12 +235,13 @@
             this.Controls.Add(this.folderPicBox);
             this.Controls.Add(this.pnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.folderPicBox)).EndInit();
             this.pnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.folderPicBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
