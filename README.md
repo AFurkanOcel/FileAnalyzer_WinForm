@@ -1,9 +1,8 @@
-# File Analyzer
+# FileAnalyzer_WinForm
 
 A simple file analysis tool with an optional login system.  
 The application allows you to analyze `.txt`, `.docx`, and `.pdf` files, providing detailed statistics such as character count, line count, unique words, repeated words with their frequencies, and punctuation counts.
 
-![LogIn_SignUp](FileAnalyzer_WinForm/Images/LogIn_SignUp.png)  
 ![FileAnalyzer](FileAnalyzer_WinForm/Images/FileAnalyzer.png)  
 
 ## Features
