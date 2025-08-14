@@ -26,5 +26,5 @@ The application allows you to analyze `.txt`, `.docx`, and `.pdf` files, providi
 4. Click **Analyze** to process the file and view the statistics.
 5. Click **Export** to save the results in the desired format.
 
-## Lisans
-Bu proje MIT lisansı ile lisanslanmıştır.
+## LogIn SignUp 
+![LogIn_SignUp](FileAnalyzer_WinForm/Images/LogIn_SignUp.png)  
