@@ -25,7 +25,8 @@ The application allows you to analyze `.txt`, `.docx`, and `.pdf` files, providi
 5. Click **Export** to save the results in the desired format.
 
 ## LogIn SignUp Form
-![LogIn_SignUp](FileAnalyzer_WinForm/Images/LogIn_SignUp.png)  
+<img width="336" height="297" alt="LogIn_SignUp" src="https://github.com/user-attachments/assets/da12c524-31d3-468f-9a48-8e105311de65" />
+
 
 ## FileAnalyzer Form
-![FileAnalyzer](FileAnalyzer_WinForm/Images/FileAnalyzer.png)  
+<img width="445" height="661" alt="FileAnalyzer" src="https://github.com/user-attachments/assets/2a119c5a-714b-450f-a8d7-9488806501f7" />
