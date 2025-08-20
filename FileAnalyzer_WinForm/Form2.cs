@@ -19,17 +19,31 @@ namespace FileAnalyzer_WinForm
 
         private void LogInBtn_Click(object sender, EventArgs e)
         {
-            this.Text = "Log In";
+            if (this.Text == "Log In")
+            {
+                Form1 form1 = new Form1();
+                form1.Show();
 
-            Form1 form1 = new Form1();
-            form1.Show();
-
-            this.Hide();
+                this.Hide();
+            }
+            else
+            {
+                this.Text = "Log In";
+            }
         }
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
-            this.Text = "Sign Up";
+            if(this.Text == "Sign Up")
+            {
+                Form1 form1 = new Form1();
+                form1.Show();
+                this.Hide();
+            }
+            else
+            {
+                this.Text = "Sign Up";
+            }
         }
     }
 }

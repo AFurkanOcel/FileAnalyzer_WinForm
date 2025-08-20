@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using FileAnalyzer_WinForm.FileReaders;
 using FileAnalyzer_Console.FileReaders;
 using Newtonsoft.Json;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace FileAnalyzer_WinForm
 {
@@ -188,6 +189,11 @@ namespace FileAnalyzer_WinForm
                 File.AppendAllText(logPath, ex.StackTrace);
                 File.AppendAllText(logPath, Environment.NewLine);
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
